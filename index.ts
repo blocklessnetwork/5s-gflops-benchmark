@@ -37,7 +37,7 @@ function runBenchmark(durationSeconds: f64, runs: i32): f64 {
 
 	// Multiple runs
 	let totalGFLOPS: f64 = 0.0;
-	for (let i: i32 = 0; i < runs; i++) {
+	for (let i: i32 = 0; i < runs - 1; i++) {
 		totalGFLOPS += benchmarkGFLOPS(durationSeconds);
 	}
 
