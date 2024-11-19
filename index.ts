@@ -27,23 +27,23 @@ function benchmarkGFLOPS(durationSeconds: f64): f64 {
 }
 
 function runBenchmark(durationSeconds: f64, runs: i32): f64 {
-	try {
-		// Warm-up phase
-		benchmarkGFLOPS(1);
-
-		// Multiple runs
-		let totalGFLOPS: f64 = 0.0;
-		for (let i: i32 = 0; i < runs; i++) {
-			totalGFLOPS += benchmarkGFLOPS(durationSeconds);
-		}
-
-		// Average GFLOPS
-		return totalGFLOPS / runs;
-	} catch (e) {
-		Console.error("An error occurred during benchmarking: " + e.toString());
+	if (durationSeconds <= 0 || runs <= 0) {
+		Console.error("Invalid input parameters for benchmarking.");
 		return 0.0;
 	}
+
+	// Warm-up phase
+	benchmarkGFLOPS(1);
+
+	// Multiple runs
+	let totalGFLOPS: f64 = 0.0;
+	for (let i: i32 = 0; i < runs; i++) {
+		totalGFLOPS += benchmarkGFLOPS(durationSeconds);
+	}
+
+	// Average GFLOPS
+	return totalGFLOPS / runs;
 }
 
 // Ensure isolation by running the benchmark in a controlled environment
-Console.log(`Average GFLOPS: ${runBenchmark(1, 5)}`);
+Console.log(`Average GFLOPS: ${runBenchmark(5, 3)}`);
