@@ -46,4 +46,4 @@ function runBenchmark(durationSeconds: f64, runs: i32): f64 {
 }
 
 // Ensure isolation by running the benchmark in a controlled environment
-Console.log(`Average GFLOPS: ${runBenchmark(5, 3)}`);
+Console.log(`Average GFLOPS: ${runBenchmark(1, 5)}`);
